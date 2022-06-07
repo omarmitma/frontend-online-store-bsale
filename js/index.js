@@ -122,7 +122,7 @@ function createListOfCategories(data) {
         let classA = "";
         if(element.id == idCategory)classA = 'class ="activeCategory"'; 
         //
-        let href = urlWithoutParams + updateParamsUrl(element.id, method, nameProduct, pagination);
+        let href = urlWithoutParams + updateParamsUrl(element.id, method, "", 0);
         ul.innerHTML += `<li>
                             <a href="${href}" ${classA}>${element.name}</a>
                         </li>`;
