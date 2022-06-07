@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="btnNavMobile">
+            <button class="btnMenu" id="btnOpenNav">
+                <img src="icons/menu.png" class="iconMenu">
+                <img src="icons/cancel.png" class="iconClose">
+            </button>
+        </div>
+        <nav class="navMobile" id="nav">
+        </nav>
+        <div class="title">
+            <h1>Bsale Challenge</h1>
+        </div>
+        <div class="shoppingCart">
+            <button>
+                <img src="icons/carrito.png">
+            </button>
+        </div>
+    </header>
+    <main id="main">
+        <div class="content">
+            <div class="headerMain">
+                <div class="orderProducts">
+                    <button class="btnOrder" onclick="openOrderList()">
+                        <span id="textOrder">A-Z</span>
+                        <img src="icons/flecha-hacia-abajo.png">
+                    </button>
+                    <div class="orderList" id="orderList">
+                        <button onclick="changeOrder('A-Z')">A-Z</button>
+                        <button onclick="changeOrder('Z-A')">Z-A</button>
+                        <button onclick="changeOrder('Precio Menor')">Precio Menor</button>
+                        <button onclick="changeOrder('Precio Mayor')">Precio Mayor</button>
+                    </div>
+                </div>
+                <div class="productsFinder">
+                    <input type="text" placeholder="Buscar Producto" onkeypress="searchProductByNameEnter(event)" id="inputSearchProductByName" >
+                    <button onclick="searchProductByName()">
+                        <img src="icons/search.png">
+                    </button>
+                </div>
+            </div>
+            <div class="productsContent" id="productsContent">
+                
+            </div>
+            <div class="paginationContent">
+                <div class="pagination" id="pagination">
+                   
+                </div>
+            </div>
+            <div id="notFound">
+                <p>Producto no encontrado</p>
+            </div>
+        </div>
+        <div class="loadModal">
+            <div class="contentImg">
+                <img src="icons/cargando-loading.gif">
+            </div>
+        </div>
+    </main>
+    <script src="js/openMenuList.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

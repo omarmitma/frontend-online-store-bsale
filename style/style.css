@@ -1,0 +1,397 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Lato, sans-serif;
+}
+
+button, a {
+  text-decoration: none;
+  border: none;
+  -webkit-transition: .6s all;
+  transition: .6s all;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+body header {
+  padding: 0 8px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #fff;
+  width: 100%;
+  height: 50px;
+  -webkit-box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.04);
+          box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.04);
+  z-index: 10;
+}
+
+body header .btnNavMobile .btnMenu .iconClose {
+  display: none;
+}
+
+body header .btnNavMobile .btnClose .iconMenu {
+  display: none;
+}
+
+body header nav {
+  position: absolute;
+  background-color: #fff;
+  top: 49px;
+  left: 0;
+  width: 80%;
+  height: 100vh;
+  -webkit-box-shadow: 3px 6px 8px 1px rgba(0, 0, 0, 0.04);
+          box-shadow: 3px 6px 8px 1px rgba(0, 0, 0, 0.04);
+  -webkit-transition: .8s transform;
+  transition: .8s transform;
+  overflow: auto;
+}
+
+body header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body header nav ul li a {
+  color: #888;
+  font-weight: bold;
+  padding: 20px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid #ddd;
+  text-transform: uppercase;
+}
+
+body header nav ul li .activeCategory {
+  background-color: #444;
+  color: #fff;
+}
+
+body header nav ul li a:hover {
+  background-color: #444;
+}
+
+body header .navMobile {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+body header .navMobileActive {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+body header .title {
+  color: #ff6800;
+  font-size: 13px;
+}
+
+body main {
+  margin-top: 70px;
+  position: relative;
+  padding: 0 8px;
+}
+
+body main .content .headerMain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 20px 0;
+}
+
+body main .content .headerMain .orderProducts {
+  position: relative;
+}
+
+body main .content .headerMain .orderProducts .btnOrder {
+  background-color: #70747e;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px;
+  border-radius: 2px;
+  width: 115px;
+}
+
+body main .content .headerMain .orderProducts .btnOrder span {
+  color: #eee;
+  font-weight: bold;
+}
+
+body main .content .headerMain .orderProducts .btnOrder img {
+  width: 16px;
+}
+
+body main .content .headerMain .orderProducts .orderList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: .6s transform;
+  transition: .6s transform;
+}
+
+body main .content .headerMain .orderProducts .orderList button {
+  padding: 7px 5px;
+  width: 100%;
+  background-color: #70747e;
+  text-align: left;
+  color: #fff;
+}
+
+body main .content .headerMain .orderProducts .orderList button:hover {
+  background-color: #a1a4ac;
+}
+
+body main .content .headerMain .orderProducts .orderListActive {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
+body main .content .headerMain .productsFinder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .content .headerMain .productsFinder #inputSearchProductByName {
+  height: 100%;
+  border: none;
+  border-bottom: 2px solid #88898d;
+  outline: none;
+  padding: 5px;
+}
+
+body main .content .headerMain .productsFinder button img {
+  width: 16px;
+}
+
+body main .content .productsContent {
+  margin: 40px 0;
+}
+
+body main .content .productsContent ul {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  place-content: space-evenly;
+}
+
+body main .content .productsContent ul li {
+  list-style: none;
+}
+
+body main .content .productsContent ul li .product {
+  width: 90%;
+  margin: auto;
+  -webkit-box-shadow: 1px 4px 8px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 1px 4px 8px 2px rgba(0, 0, 0, 0.15);
+}
+
+body main .content .productsContent ul li .product .productImage {
+  height: 250px;
+  padding: 15px;
+}
+
+body main .content .productsContent ul li .product .productImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+body main .content .productsContent ul li .product .productName {
+  text-transform: uppercase;
+  width: 85%;
+  margin: 20px auto;
+}
+
+body main .content .productsContent ul li .product .productName p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: -0.05em;
+  color: #555;
+  height: 34px;
+}
+
+body main .content .productsContent ul li .product hr {
+  background-color: #c2c3c5;
+  height: 3px;
+}
+
+body main .content .productsContent ul li .product .productPrice {
+  width: 85%;
+  margin: auto;
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .content .productsContent ul li .product .productPrice button {
+  background-color: #70747e;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+body main .content .paginationContent .pagination ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 20px auto;
+}
+
+body main .content .paginationContent .pagination ul li {
+  list-style: none;
+}
+
+body main .content .paginationContent .pagination ul li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #444;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .content .paginationContent .pagination ul li a:hover {
+  background-color: #777;
+}
+
+body main .content .paginationContent .pagination ul li .activePagination {
+  background-color: #777;
+  cursor: default;
+  pointer-events: none;
+}
+
+body main .content .paginationContent .pagination ul li .previous, body main .content .paginationContent .pagination ul li .next {
+  margin: 0 1px;
+}
+
+body main .content .paginationContent .pagination ul li .next {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+body main .loadModal {
+  display: none;
+}
+
+body main #notFound {
+  display: none;
+  text-align: center;
+}
+
+body main #notFound p {
+  text-transform: uppercase;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+body .loading {
+  margin-top: 0;
+  min-height: 100vh;
+}
+
+body .loading .content {
+  display: none;
+}
+
+body .loading .loadModal {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  body header {
+    padding: 0 30px;
+    height: 70px;
+  }
+  body header nav {
+    top: 69px;
+    width: 340px;
+  }
+  body main {
+    margin-top: 90px;
+    padding: 0 30px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
