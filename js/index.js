@@ -67,7 +67,7 @@ function getProducts(){
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            if(data.length > 1)createHtmlForProducts(data);
+            if(data.length > 0)createHtmlForProducts(data);
             else document.getElementById('notFound').style.display = 'block';
         })
         .catch(error => console.error('Error:', error))
