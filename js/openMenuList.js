@@ -1,5 +1,6 @@
 'use strict';
 
+
 //Abrir y cerrar navegador mobile
 const btnNav = document.getElementById('btnOpenNav');
 const nav = document.getElementById('nav');
@@ -19,6 +20,7 @@ btnNav.addEventListener('click',()=>{
         nav.classList.remove('navMobile');
     }
 });
+
 
 //Abrir la lista de orden
 let orderActive = false;

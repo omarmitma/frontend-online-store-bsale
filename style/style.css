@@ -82,12 +82,13 @@ body header nav ul li a {
 }
 
 body header nav ul li .activeCategory {
-  background-color: #444;
+  background-color: #70747e;
   color: #fff;
 }
 
 body header nav ul li a:hover {
-  background-color: #444;
+  color: #ddd;
+  background-color: #70747e;
 }
 
 body header .navMobile {
@@ -307,7 +308,7 @@ body main .content .paginationContent .pagination ul li a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #444;
+  background-color: #70747e;
   color: #fff;
   width: 35px;
   height: 35px;
@@ -320,11 +321,11 @@ body main .content .paginationContent .pagination ul li a {
 }
 
 body main .content .paginationContent .pagination ul li a:hover {
-  background-color: #777;
+  background-color: #464444;
 }
 
 body main .content .paginationContent .pagination ul li .activePagination {
-  background-color: #777;
+  background-color: #111;
   cursor: default;
   pointer-events: none;
 }

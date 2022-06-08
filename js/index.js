@@ -60,7 +60,6 @@ function getProductsAllToPagination() {
             console.error('Error:', error);
             main.classList.remove('loading');
         })
-        
 }
 //Funcion para obtener todos los productos a mostrar segun paginacion y pantalla de carga
 function getProducts(){
@@ -83,12 +82,7 @@ function getCategorys(){
         .catch(error => console.error('Error:', error));
 }
 
-//Cambiar orden de los productos
-function changeOrder(order){
-    window.location.href = urlWithoutParams + updateParamsUrl(idCategory, order, nameProduct, pagination);
-}
-
-//Funcion para obtener los parametros a mandar en la url
+//Funcion para actualizar los parametros a mandar en la url
 function updateParamsUrl(idCategory, order, name, pagination) {
     let params = '?';
 
@@ -101,6 +95,11 @@ function updateParamsUrl(idCategory, order, name, pagination) {
     if(params.charAt(1) == '&') params = params.replace('?&','?');
 
     return params;
+}
+
+//Cambiar orden de los productos
+function changeOrder(order){
+    window.location.href = urlWithoutParams + updateParamsUrl(idCategory, order, nameProduct, pagination);
 }
 
 //Buscar producto por nombre
