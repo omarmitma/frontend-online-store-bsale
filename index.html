@@ -18,11 +18,14 @@
         <nav class="navMobile" id="nav">
         </nav>
         <div class="title">
-            <h1>Bsale Challenge</h1>
+            <button onclick="home()">
+                Bsale Challenge
+            </button>
         </div>
-        <div class="shoppingCart">
-            <button>
-                <img src="icons/carrito.png">
+        <div class="productsFinder">
+            <input type="text" placeholder="Buscar Producto" onkeypress="searchProductByNameEnter(event)" id="inputSearchProductByName" >
+            <button onclick="searchProductByName()">
+                <img src="icons/search.png">
             </button>
         </div>
     </header>
@@ -41,12 +44,7 @@
                         <button onclick="changeOrder('Precio Mayor')">Precio Mayor</button>
                     </div>
                 </div>
-                <div class="productsFinder">
-                    <input type="text" placeholder="Buscar Producto" onkeypress="searchProductByNameEnter(event)" id="inputSearchProductByName" >
-                    <button onclick="searchProductByName()">
-                        <img src="icons/search.png">
-                    </button>
-                </div>
+                
             </div>
             <div class="productsContent" id="productsContent">
                 

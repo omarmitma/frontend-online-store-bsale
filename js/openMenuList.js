@@ -34,3 +34,8 @@ function openOrderList(){
         orderList.classList.add('orderListActive');
     }
 }
+
+//Ir a pagina principal
+function home() { 
+    window.location.href = window.location.href.match(/^[^\#\?]+/)[0];;
+}

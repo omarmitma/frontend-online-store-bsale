@@ -16,13 +16,17 @@ button, a {
 }
 
 body header {
-  padding: 0 8px;
+  padding: 8px;
   position: fixed;
   top: 0;
   left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -31,10 +35,16 @@ body header {
           justify-content: space-between;
   background-color: #fff;
   width: 100%;
-  height: 50px;
+  height: 90px;
   -webkit-box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.04);
           box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.04);
   z-index: 10;
+}
+
+body header .btnNavMobile {
+  position: absolute;
+  left: 8px;
+  top: 8px;
 }
 
 body header .btnNavMobile .btnMenu .iconClose {
@@ -48,7 +58,7 @@ body header .btnNavMobile .btnClose .iconMenu {
 body header nav {
   position: absolute;
   background-color: #fff;
-  top: 49px;
+  top: 89px;
   left: 0;
   width: 80%;
   height: 100vh;
@@ -101,13 +111,37 @@ body header .navMobileActive {
           transform: translateX(0);
 }
 
-body header .title {
+body header .title button {
+  font-weight: bold;
   color: #ff6800;
-  font-size: 13px;
+  font-size: 25px;
+}
+
+body header .productsFinder {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body header .productsFinder #inputSearchProductByName {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-bottom: 2px solid #a8a9ad;
+  outline: none;
+  padding: 7px;
+}
+
+body header .productsFinder button img {
+  width: 16px;
 }
 
 body main {
-  margin-top: 70px;
+  margin-top: 110px;
   position: relative;
   padding: 0 8px;
 }
@@ -116,9 +150,9 @@ body main .content .headerMain {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
   margin: 20px 0;
 }
 
@@ -186,27 +220,6 @@ body main .content .headerMain .orderProducts .orderList button:hover {
 body main .content .headerMain .orderProducts .orderListActive {
   -webkit-transform: scaleY(1);
           transform: scaleY(1);
-}
-
-body main .content .headerMain .productsFinder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body main .content .headerMain .productsFinder #inputSearchProductByName {
-  height: 100%;
-  border: none;
-  border-bottom: 2px solid #88898d;
-  outline: none;
-  padding: 5px;
-}
-
-body main .content .headerMain .productsFinder button img {
-  width: 16px;
 }
 
 body main .content .productsContent {
@@ -385,10 +398,20 @@ body .loading .loadModal {
   body header {
     padding: 0 30px;
     height: 70px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
   body header nav {
     top: 69px;
     width: 340px;
+  }
+  body header .btnNavMobile {
+    position: relative;
+  }
+  body header .productsFinder {
+    width: 250px;
   }
   body main {
     margin-top: 90px;

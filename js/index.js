@@ -8,45 +8,38 @@ pagination = pagination - 1;
 let limit = 8;
 
 let offset = 0;
-if(pagination !== 0 ) offset = pagination * limit + 1;
+if(pagination !== 0 ) offset = pagination * limit ;
 
-const idCategory = params.get('category') || 1;
-const nameProduct = params.get('product') || "";
-const method = params.get('order') || "A-Z";
+const idCategory = params.get('category') || 0;
+const nameProduct = params.get('name') || "";
+const order = params.get('order').replace(/ /g, "") || "A-Z";
 
-//Url para pedir a la api los productos a mostrar dependendiendo de la paginacion
-const url = `https://backend-online-store-bsale.herokuapp.com/api/v1/Product/${this.methodName(method)}?category=${idCategory}&name=${nameProduct}&limit=${limit}&offset=${offset}`;
-
-//Url para saber cuantos productos en total se mostraran y saber cuantas paginaciones hacer
-const urlProductAll = `https://backend-online-store-bsale.herokuapp.com/api/v1/Product/getAmountOfFilteredProducts?category=${idCategory}&name=${nameProduct}`;
 
 //Url para obtener las categorias
 const urlCategory = 'https://backend-online-store-bsale.herokuapp.com/api/v1/Category/findAll';
 
+//Url para obtener todos los productos (no se mostrara todo esto solo se usara para ver la cantidad de paginacion a hacer)
+let urlProductsPagination = `https://backend-online-store-bsale.herokuapp.com/api/v1/Product/`;
+//Url para obtener los productos a mostrar segun paginacion
+let urlShowProducts = `https://backend-online-store-bsale.herokuapp.com/api/v1/Product/order?order=${order}&limit=${limit}&offset=${offset}`;
+
+//Cambiar url segun parametros
+if(idCategory > 0){
+    urlProductsPagination = `https://backend-online-store-bsale.herokuapp.com/api/v1/Product/bycategory?category=${idCategory}`;
+    urlShowProducts = `https://backend-online-store-bsale.herokuapp.com/api/v1/Product/bycategorywithorder?category=${idCategory}&order=${order}&limit=${limit}&offset=${offset}`;
+} 
+else if(nameProduct != ""){
+    urlProductsPagination = `https://backend-online-store-bsale.herokuapp.com/api/v1/Product/byname?name=${nameProduct}`;
+    urlShowProducts = `https://backend-online-store-bsale.herokuapp.com/api/v1/Product/bynamewithorder?name=${nameProduct}&order=${order}&limit=${limit}&offset=${offset}`;
+} 
 // Obtener url sin parametros
 const urlWithoutParams = window.location.href.match(/^[^\#\?]+/)[0];
-
-//Obtener nombre de metodo a llamar a la api dependiendo el orden
-function methodName (order){
-    switch (order){
-        case "A-Z":
-            return "filterProductsByNameASCWithLimit";
-        case "Z-A":
-            return "filterProductsByNameDESCWithLimit";
-        case "Precio Menor":
-            return "filterProductsByPrecioASCWithLimit";
-        case "Precio Mayor":
-            return "filterProductsByPrecioDESCWithLimit";
-        default:
-            return "filterProductsByNameASCWithLimit";
-    }
-}
 
 //Funcion para obtener la cantidad de paginacion y llamar a la funcion getProducts
 const main = document.getElementById("main");
 function getProductsAllToPagination() {
     main.classList.add('loading');
-    fetch(urlProductAll)
+    fetch(urlProductsPagination)
         .then((response) => response.json())
         .then((data)=>{
             //Si la paginacion tiene mas de 1 pagina se llamara al metodo createHtmlPagination
@@ -63,7 +56,7 @@ function getProductsAllToPagination() {
 }
 //Funcion para obtener todos los productos a mostrar segun paginacion y pantalla de carga
 function getProducts(){
-    fetch(url)
+    fetch(urlShowProducts)
         .then((response) => response.json())
         .then((data) => {
             if(data.length > 0)createHtmlForProducts(data);
@@ -86,9 +79,9 @@ function getCategorys(){
 function updateParamsUrl(idCategory, order, name, pagination) {
     let params = '?';
 
-    if(idCategory != 1) params += "category=" + idCategory;
+    if(idCategory != 0) params += "category=" + idCategory;
+    if(name != '') params += "&name=" + name;
     if(order != 'A-Z') params += "&order=" + order;
-    if(name != '') params += "&product=" + name;
     if(pagination != 0 ) params += "&pagination=" + ( pagination + 1);
 
     if(params.length < 2) params = '';
@@ -105,7 +98,7 @@ function changeOrder(order){
 //Buscar producto por nombre
 function searchProductByName(){
     let inputSearchProductByName = document.getElementById('inputSearchProductByName').value;
-    window.location.href = urlWithoutParams + updateParamsUrl(idCategory, method, inputSearchProductByName, pagination);
+    window.location.href = urlWithoutParams + updateParamsUrl(0, order, inputSearchProductByName, 0);
 }
 function searchProductByNameEnter(e){
     let tecla = (document.all) ? e.keyCode : e.which;
@@ -121,7 +114,7 @@ function createListOfCategories(data) {
         let classA = "";
         if(element.id == idCategory)classA = 'class ="activeCategory"'; 
         //
-        let href = urlWithoutParams + updateParamsUrl(element.id, method, "", 0);
+        let href = urlWithoutParams + updateParamsUrl(element.id, order, "", 0);
         ul.innerHTML += `<li>
                             <a href="${href}" ${classA}>${element.name}</a>
                         </li>`;
@@ -158,7 +151,7 @@ const paginationHtml = document.getElementById('pagination');
 function createHtmlPagination(page) {
     let ul = document.createElement("ul");
     //Paginacion retroceder pagina
-    let hrefPrevious = urlWithoutParams + updateParamsUrl(idCategory, method, nameProduct, pagination - 1 );
+    let hrefPrevious = urlWithoutParams + updateParamsUrl(idCategory, order, nameProduct, pagination - 1 );
     let previous = `<li>
                         <a href="${hrefPrevious}" class="previous">
                             <img src="icons/arrow.png">
@@ -171,7 +164,7 @@ function createHtmlPagination(page) {
                                     </li>`;
     ul.innerHTML += previous; 
     //Paginacion Siguiente pagina
-    let hrefNext = urlWithoutParams + updateParamsUrl(idCategory, method, nameProduct, pagination + 1 );
+    let hrefNext = urlWithoutParams + updateParamsUrl(idCategory, order, nameProduct, pagination + 1 );
     let next = `<li>
                         <a href="${hrefNext}" class="next">
                             <img src="icons/arrow.png">
@@ -187,9 +180,8 @@ function createHtmlPagination(page) {
         //Si la pagina actual es la misma se agrega la clase activa
         let classA = '';
         if(i == pagination) classA = 'class = "activePagination"'; 
-
         //
-        let href = urlWithoutParams + updateParamsUrl(idCategory, method, nameProduct, i );
+        let href = urlWithoutParams + updateParamsUrl(idCategory, order, nameProduct, i );
         ul.innerHTML += `<li>
                     <a href="${href}" disabled ${classA} >${i + 1}</a>
                 </li>`;
@@ -203,7 +195,7 @@ let init = ()=>{
     document.getElementById('inputSearchProductByName').value = nameProduct;
     //Poner el texto dependiendo del orden filtrado
     const textOrder = document.getElementById('textOrder');
-    textOrder.innerText = method;
+    textOrder.innerText = order;
     //Llama a la funcion getProductsAllToPagination y pintar todo los datos
     getProductsAllToPagination();
 }
