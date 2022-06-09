@@ -12,8 +12,7 @@ if(pagination !== 0 ) offset = pagination * limit ;
 
 const idCategory = params.get('category') || 0;
 const nameProduct = params.get('name') || "";
-const order = params.get('order') || "A-Z";
-order = order.replace(/ /g, "");
+const order = params.get('order').replace(/ /g, "") || "A-Z";
 
 
 //Url para obtener las categorias
