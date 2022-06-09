@@ -12,8 +12,8 @@ if(pagination !== 0 ) offset = pagination * limit ;
 
 const idCategory = params.get('category') || 0;
 const nameProduct = params.get('name') || "";
-const order = params.get('order').replace(/ /g, "") || "A-Z";
-
+let order = params.get('order') || "A-Z";
+order = order.replace(/ /g, "");
 
 //Url para obtener las categorias
 const urlCategory = 'https://backend-online-store-bsale.herokuapp.com/api/v1/Category/findAll';
