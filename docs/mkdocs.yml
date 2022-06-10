@@ -3,6 +3,6 @@ site_name: Documentacion
 nav:
   - Ejercicio : 'index.md'
   - Api Rest : 'apiRest.md'
-  - Frontend : 'fronted.md'
+  - Frontend : 'frontend.md'
 
 theme: readthedocs

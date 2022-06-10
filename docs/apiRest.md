@@ -51,15 +51,19 @@ Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente e
 
 
 ### Listar todos los productos
-- ` GET /findAll `  Nos devuelve todos los productos de la base de datos.  
+- ` GET / `  Nos devuelve todos los productos de la base de datos.  
 
 **Parámetros**  
 
 No se necesita pasar ningun parametro para obtener todos los productos de la base de datos.
 
+**Ejemplo**  
+
+- ` GET /api/v1/Product/ `
+
 ### Filtrar producto por categoria
 
-- ` GET /findByCategory `  Nos devuelve todos los productos de una categoria especificada.
+- ` GET /bycategory `  Nos devuelve todos los productos de una categoria especificada.
 
 **Parámetros**  
 
@@ -67,7 +71,7 @@ No se necesita pasar ningun parametro para obtener todos los productos de la bas
   
 **Ejemplo**  
 
-- ` GET /api/v1/Product/findByCategory?category=7 `
+- ` GET /api/v1/Product/bycategory?category=7 `
 
 **Respuesta**
 
@@ -84,120 +88,194 @@ No se necesita pasar ningun parametro para obtener todos los productos de la bas
 ]
 ```
 
-### Filtrar productos por nombre y categoria  
+### Filtrar producto por nombre
 
-- ` GET /getAmountOfFilteredProducts `  Nos devuelve todos los productos dependiendo del nombre y categoria buscada.
+- ` GET /byname `  Nos devuelve todos los productos filtrando por nombre.
 
 **Parámetros**  
 
-- category, id de la categoria a buscar.  
 - name, nombre del producto a buscar.
   
 **Ejemplo**  
 
-- ` GET /api/v1/Product/getAmountOfFilteredProducts?category=1&name=monster `
+- ` GET /api/v1/Product/byname?name=coca `
 
 **Respuesta**
+
 ``` JSON
-    [
-        {
-            "id": 34,
-            "name": "ENERGETICA MONSTER RIPPER",
-            "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/mosterriper0436.jpg",
-            "price": 1990.0,
-            "discount": 0,
-            "category": 1
-        },
-        {
-            "id": 36,
-            "name": "ENERGETICA MONSTER VERDE",
-            "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/monsterverde0476.jpg",
-            "price": 1990.0,
-            "discount": 0,
-            "category": 1
-        },
-        {
-            "id": 77,
-            "name": "ENERGETICA MONSTER RIPPER",
-            "url_image": "",
-            "price": 1990.0,
-            "discount": 0,
-            "category": 1
-        },
-        {
-            "id": 79,
-            "name": "ENERGETICA MONSTER VERDE",
-            "url_image": "",
-            "price": 1990.0,
-            "discount": 0,
-            "category": 1
-        }
-    ]
+
+[
+    {
+        "id": 37,
+        "name": "COCA COLA ZERO DESECHABLE",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/cocazero9766.jpg",
+        "price": 1490.0,
+        "discount": 0,
+        "category": 4
+    },
+    {
+        "id": 57,
+        "name": "COCA COLA NORMAL DESECHABLE 1500cc",
+        "url_image": null,
+        "price": 1500.0,
+        "discount": 0,
+        "category": 4
+    },
+    {
+        "id": 58,
+        "name": "COCA COLA LIGHT DESECHABLE",
+        "url_image": null,
+        "price": 1500.0,
+        "discount": 0,
+        "category": 4
+    }
+]
+
 ```
 
-### Filtrar productos por nombre, categoria y poner un limite (Ordenado)
+### Filtrar productos ordenados 
 
-- ` GET /filterProductsByNameASCWithLimit `  
-Nos devuelve productos ordenados por **nombre Ascendente**  dependiendo del nombre y categoria buscada.
-
-- ` GET /filterProductsByNameDESCWithLimit `  
-Nos devuelve productos ordenados por **nombre Descendente**  dependiendo del nombre y categoria buscada.
-
-- ` GET /filterProductsByPrecioASCWithLimit `  
-Nos devuelve productos ordenados por **Precio Ascendente**  dependiendo del nombre y categoria buscada.
-
-- ` GET /filterProductsByPrecioDESCWithLimit `  
-Nos devuelve productos ordenados por **Precio Descendente** dependiendo del nombre y categoria buscada.
+- ` GET /order `  Nos devuelve una cantidad de productos ordenados dependiendo de los parametros.
 
 **Parámetros**  
 
-- category, id de la categoria a buscar.  
-- name, nombre del producto a buscar.
+- order, tipo de orden.("A-Z","Z-A","PrecioMenor","PrecioMayor")  
 - limit, limita la cantidad de productos a llamar.
 - offset, numero especifico de registros desde el inico de la sentencia.
   
 **Ejemplo**  
 
-- ` /api/v1/Product/filterProductsByNameASCWithLimit?category=1&name=monster&limit=4&offset=0 `
+- ` GET /api/v1/Product/order?order=PrecioMenor&limit=4&offset=0 `
 
 **Respuesta**
 ``` JSON
 [
     {
-        "id": 34,
-        "name": "ENERGETICA MONSTER RIPPER",
-        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/mosterriper0436.jpg",
-        "price": 1990.0,
+        "id": 53,
+        "name": "Mani Sin Sal",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/manisinsalmp6988.jpg",
+        "price": 500.0,
         "discount": 0,
-        "category": 1
+        "category": 5
     },
     {
-        "id": 77,
-        "name": "ENERGETICA MONSTER RIPPER",
+        "id": 55,
+        "name": "Papas Fritas Bolsa Pequeña",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/papaslisas7271.jpg",
+        "price": 500.0,
+        "discount": 0,
+        "category": 5
+    },
+    {
+        "id": 47,
+        "name": "Maní salado",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/manisaladomp4415.jpg",
+        "price": 600.0,
+        "discount": 0,
+        "category": 5
+    },
+    {
+        "id": 98,
+        "name": "Cerveza Escudo Normal LATA 350CC",
         "url_image": "",
-        "price": 1990.0,
+        "price": 600.0,
         "discount": 0,
-        "category": 1
-    },
-    {
-        "id": 36,
-        "name": "ENERGETICA MONSTER VERDE",
-        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/monsterverde0476.jpg",
-        "price": 1990.0,
-        "discount": 0,
-        "category": 1
-    },
-    {
-        "id": 79,
-        "name": "ENERGETICA MONSTER VERDE",
-        "url_image": "",
-        "price": 1990.0,
-        "discount": 0,
-        "category": 1
+        "category": 6
     }
 ]
 ```
 
+### Filtrar productos por nombre y ordenados
+
+- ` GET /bynamewithorder ` Nos devuelve una cantidad de productos filtrados por **nombre** ordenados.
+
+**Parámetros**  
+
+- name, nombre del producto a buscar.
+- order, tipo de orden.("A-Z","Z-A","PrecioMenor","PrecioMayor")  
+- limit, limita la cantidad de productos a llamar.
+- offset, numero especifico de registros desde el inico de la sentencia.
+  
+**Ejemplo**  
+
+- ` /api/v1/Product/bynamewithorder?name=coca&order=PrecioMenor&limit=3&offset=0 `
+
+**Respuesta**
+``` JSON
+[
+    {
+        "id": 37,
+        "name": "COCA COLA ZERO DESECHABLE",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/cocazero9766.jpg",
+        "price": 1490.0,
+        "discount": 0,
+        "category": 4
+    },
+    {
+        "id": 57,
+        "name": "COCA COLA NORMAL DESECHABLE 1500cc",
+        "url_image": null,
+        "price": 1500.0,
+        "discount": 0,
+        "category": 4
+    },
+    {
+        "id": 58,
+        "name": "COCA COLA LIGHT DESECHABLE",
+        "url_image": null,
+        "price": 1500.0,
+        "discount": 0,
+        "category": 4
+    }
+]
+```
+
+
+
+### Filtrar productos por categoria y ordenados
+
+- ` GET /bycategorywithorder ` Nos devuelve una cantidad de productos filtrados por **categoria** ordenados.
+
+**Parámetros**  
+
+- category, id de la categoria.
+- order, tipo de orden.("A-Z","Z-A","PrecioMenor","PrecioMayor")  
+- limit, limita la cantidad de productos a llamar.
+- offset, numero especifico de registros desde el inico de la sentencia.
+  
+**Ejemplo**  
+
+- ` /api/v1/Product/bycategorywithorder?category=2&order=PrecioMenor&limit=3&offset=0 `
+
+**Respuesta**
+``` JSON
+[
+    {
+        "id": 12,
+        "name": "PISCO CAMPANARIO 35º",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/campanario8845.jpg",
+        "price": 2990.0,
+        "discount": 20,
+        "category": 2
+    },
+    {
+        "id": 10,
+        "name": "PISCO ARTESANOS 35º ",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/artesanos8818.jpg",
+        "price": 3990.0,
+        "discount": 0,
+        "category": 2
+    },
+    {
+        "id": 13,
+        "name": "PISCO CAMPANARIO 40º",
+        "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/campanario408881.jpg",
+        "price": 3990.0,
+        "discount": 20,
+        "category": 2
+    }
+]
+```
 
 
 ## Categorias
